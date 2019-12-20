@@ -1,0 +1,28 @@
+{
+  "name": "las2png",
+  "version": "1.0.0",
+  "description": "Generate Mapbox Terrain-RGB from LAS files",
+  "bin": "./las2png.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frogcat/las2png.git"
+  },
+  "keywords": [
+    "las"
+  ],
+  "author": "frogcat",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/frogcat/las2png/issues"
+  },
+  "homepage": "https://github.com/frogcat/las2png#readme",
+  "dependencies": {
+    "LasStreamReader": "^1.0.18",
+    "command-line-args": "^5.1.1",
+    "command-line-usage": "^6.1.0",
+    "pngjs": "^3.4.0"
+  }
+}
