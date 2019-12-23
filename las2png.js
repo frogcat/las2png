@@ -52,7 +52,7 @@ options["zoom"].split(",").forEach(a => {
 });
 const epsgDatum = options["epsg-datum"];
 const files = options["files"];
-const directory = options["directory"];
+const directory = options["directory"].replace(/[/]+$/, "");
 
 if (!files || files.length === 0) {
   const sections = [{
@@ -159,13 +159,14 @@ function read(file, target) {
     "bounds": bounds
   };
 
+  if (!fs.existsSync(directory)) fs.mkdirSync(directory);
   fs.writeFileSync(directory + "/tilejson.json", JSON.stringify(tilejson, null, 2), "UTF-8");
 
   Object.keys(tree).forEach(z => {
     Object.keys(tree[z]).forEach(tx => {
       Object.keys(tree[z][tx]).forEach(ty => {
         const dem = tree[z][tx][ty];
-        let path = directory.replace(/[/]+$/, "");
+        let path = "" + directory;
         if (!fs.existsSync(path)) fs.mkdirSync(path);
         path += ("/" + z);
         if (!fs.existsSync(path)) fs.mkdirSync(path);
